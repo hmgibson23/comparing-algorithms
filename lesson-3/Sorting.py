@@ -1,6 +1,8 @@
 import itertools
 import sys
 sys.path.append("..")
+
+from heapq import merge
 from helpers.Helpers import *
 
 
@@ -70,6 +72,26 @@ def siftDown(n, start, end):
     else:
       break
 
+### A merge sort algorithm
+# I cheated and used the merge from the heapq module
+# because I'm lazy and couldn't be bothere to implement it
+# myself
+@timing
+def mergeSort(n):
+    return ms(n)
+
+def ms(n):
+    if len(n) <= 1:
+        return n
+
+    middle = len(n) // 2
+    left = n[:middle]
+    right = n[middle:]
+
+    left = ms(left)
+    right = ms(right)
+    return list(merge(left, right))
+
 def main():
     values = [range(50, 100), range(23,200)] + [range(100, 200), range(3,50)]
     values = list(itertools.chain.from_iterable(values))
@@ -80,6 +102,7 @@ def main():
 
     sorted = heapSort(values)
 
+    sorted = mergeSort(values)
 
     # break quicksort - this is how we can make quick sort super duper slow
 
