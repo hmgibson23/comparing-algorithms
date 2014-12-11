@@ -20,7 +20,7 @@ famous sorting algorithms.
 
 ### Lesson 4 - Advanced (sort of) techniques
 
-Randomised algorithms and data structures and dynamic programming.
+Randomised algorithms and data structures, dynamic programming.
 
 When should you use a Skip List over a normal linked list? How does
 randomisation help optimisation? WTF is dynamic programming and how
