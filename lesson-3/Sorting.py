@@ -16,10 +16,7 @@ def bubbleSort(n):
             break
     return n
 
-@timing
-def mergeSort(n):
-    return n
-
+### Quicksort - http://en.wikipedia.org/wiki/Quicksort
 @timing
 def quickSort(n):
     res = qs(n)
@@ -41,20 +38,48 @@ def qs(n):
                 more.append(i)
             else:
                 pivotList.append(i)
-        less = quickSort(less)
-        more = quickSort(more)
+        less = qs(less)
+        more = qs(more)
         return less + pivotList + more
 
 
+### Note that heapsort is a pretty complicated algorithm
+### http://en.wikipedia.org/wiki/Heapsort
+@timing
+def heapSort(n):
+  for start in range((len(n) - 2) / 2, -1, -1):
+    siftDown(n, start, len(n)-1)
+
+  for end in range(len(n) - 1, 0, -1):
+    n[end], n[0] = n[0], n[end]
+    siftDown(n, 0, end - 1)
+  return n
+
+def siftDown(n, start, end):
+  root = start
+  while True:
+    child = root * 2 + 1
+    if child > end: break
+    if child + 1 <= end and n[child] < n[child + 1]:
+      child += 1
+    if n[root] < n[child]:
+      n[root], n[child] = n[child], n[root]
+      root = child
+    else:
+      break
+
 def main():
-    values = [range(100, 50), range(23,28)] + [range(3, 10), range(200, 54)]
+    values = [range(50, 100), range(23,200)] + [range(100, 200), range(3,50)]
     values = list(itertools.chain.from_iterable(values))
 
     sorted = bubbleSort(values)
-    print "Bubble sort result: " + str(sorted)
 
     sorted = quickSort(values)
-    print "Quick sort result: " + str(sorted)
+
+
+    sorted = heapSort(values)
+
+
 
 if __name__ == "__main__":
     main()
