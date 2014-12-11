@@ -33,31 +33,6 @@ def binarySearch(val, values):
             return m
 
 
-###### RECURSIVE ALGORITHMS ######
-def factorial(n):
-    if n == 1:
-        return 1
-    else:
-        return n * factorial(n-1)
-
-## As the above functions are recursive, these
-## helpers allows to time the whole call, not each
-## function call
-@timing
-def fnHelper(fn, n):
-    val = fn(n)
-    return val
-
-
-
-def fibonacci(n):
-    if n == 1 or n == 2:
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
-
-
-
 def main():
     values = range(1, 1000000)
     val = 340100
