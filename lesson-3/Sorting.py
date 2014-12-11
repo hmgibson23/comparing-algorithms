@@ -93,7 +93,7 @@ def ms(n):
     return list(merge(left, right))
 
 def main():
-    values = [range(50, 100), range(23,200)] + [range(100, 200), range(3,50)]
+    values = [range(50, 100), range(23,200), range(1,50)] + [range(100, 200), range(3,50)]
     values = list(itertools.chain.from_iterable(values))
 
     sorted = bubbleSort(values)
