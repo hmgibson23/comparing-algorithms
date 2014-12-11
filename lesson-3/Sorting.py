@@ -81,6 +81,8 @@ def main():
     sorted = heapSort(values)
 
 
+    # break quicksort - this is how we can make quick sort super duper slow
+
 
 if __name__ == "__main__":
     main()
