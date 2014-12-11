@@ -23,6 +23,8 @@ def quickSort(n):
     return res
 
 # The actual quicksort algorithm
+### I would highly recommend learning and understand the quicksort
+# algorithm as it is one of the fundamental ones used
 def qs(n):
     less = []
     pivotList = []
@@ -75,7 +77,6 @@ def main():
     sorted = bubbleSort(values)
 
     sorted = quickSort(values)
-
 
     sorted = heapSort(values)
 
