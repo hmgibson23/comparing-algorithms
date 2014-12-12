@@ -109,7 +109,5 @@ def main():
 
     sorted = mergeSort(values)
 
-    sorted = qsort2(values)
-
 if __name__ == "__main__":
     main()
