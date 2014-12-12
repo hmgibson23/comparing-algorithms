@@ -1,3 +1,4 @@
+import random
 import itertools
 import sys
 sys.path.append("..")
@@ -25,8 +26,11 @@ def quickSort(n):
     return res
 
 # The actual quicksort algorithm
-### I would highly recommend learning and understand the quicksort
-# algorithm as it is one of the fundamental ones used
+### I would highly recommend learning and understanding the quicksort
+# algorithm as it is one of the fundamental ones used.
+# This is a somewhat naive quicksort, which is why it's
+# outperformed by the merge and heap sorts. A better
+# quicksort, mostly, has no competitor.
 def qs(n):
     less = []
     pivotList = []
@@ -45,6 +49,7 @@ def qs(n):
         less = qs(less)
         more = qs(more)
         return less + pivotList + more
+
 
 
 ### Note that heapsort is a pretty complicated algorithm
@@ -93,8 +98,8 @@ def ms(n):
     return list(merge(left, right))
 
 def main():
-    values = [range(50, 100), range(23,200), range(1,50)] + [range(100, 200), range(3,50)]
-    values = list(itertools.chain.from_iterable(values))
+
+    values = random.sample(xrange(1000), 100)
 
     sorted = bubbleSort(values)
 
@@ -104,8 +109,7 @@ def main():
 
     sorted = mergeSort(values)
 
-    # break quicksort - this is how we can make quick sort super duper slow
-
+    sorted = qsort2(values)
 
 if __name__ == "__main__":
     main()
