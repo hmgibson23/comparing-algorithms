@@ -6,22 +6,25 @@ from helpers.Helpers import *
 from lesson3.Sorting import *
 
 # Remember the naive quicksort from last week that didn't do as well as the others?
-# It can be improved by
-
-
+# It can be improved by chossing a random pivot instead of our very naive first
+# attempts i.e make the pivot the first element in the array.
+# Now the quicksort has consistent O(n log n) running time and dominates almost
+# every other sorting algorithm.
 
 @timing
 def qsort2(n):
     return qsort(n)
 
-def qsort(L):
-    if len(L)<2: return L
-    pivot_element = random.choice(L)
-# In Python QuickSort will be much faster withlist comprehensions
-    small = [i for i in L if i< pivot_element]
-    medium = [i for i in L if i==pivot_element]
-    large = [i for i in L if i> pivot_element]
+def qsort(n):
+    if len(n)<2: return n
+    pivot_element = random.choice(n)
+
+    # In Python QuickSort will be much faster with list comprehensions
+    small = [i for i in n if i < pivot_element]
+    medium = [i for i in n if i == pivot_element]
+    large = [i for i in n if i > pivot_element]
     return qsort(small) + medium + qsort(large)
+
 def main():
 
     values = random.sample(xrange(5000), 5000)
