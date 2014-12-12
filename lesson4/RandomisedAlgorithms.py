@@ -11,6 +11,10 @@ from lesson3.Sorting import *
 # Now the quicksort has consistent O(n log n) running time and dominates almost
 # every other sorting algorithm.
 
+# BTW, quicksort can be optimised even more (make it iterative etc.) so it's so
+# fast it will make your eyes bleed. The version below, however illustrates my point
+# nicely enough. See http://www.csie.ntu.edu.tw/~b93076/p847-sedgewick.pdf for more.
+
 @timing
 def qsort2(n):
     return qsort(n)
