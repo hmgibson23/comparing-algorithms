@@ -54,6 +54,8 @@ def qs(n):
 
 ### Note that heapsort is a pretty complicated algorithm
 ### http://en.wikipedia.org/wiki/Heapsort
+# Internally, the Linux kernel uses heap sort because it is
+# consistently O(n log n). It is, however not a stable sort.
 @timing
 def heapSort(n):
   for start in range((len(n) - 2) / 2, -1, -1):
@@ -80,7 +82,8 @@ def siftDown(n, start, end):
 ### A merge sort algorithm
 # I cheated and used the merge from the heapq module
 # because I'm lazy and couldn't be bothere to implement it
-# myself
+# myself.
+# Merge sort is generally slower than heap sort but it is a stable sort.
 @timing
 def mergeSort(n):
     return ms(n)
