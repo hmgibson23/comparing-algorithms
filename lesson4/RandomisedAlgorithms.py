@@ -30,6 +30,9 @@ def qsort(n):
     large = [i for i in n if i > pivot_element]
     return qsort(small) + medium + qsort(large)
 
+# N Queens might be a nice one to solve
+
+
 def main():
 
     values = random.sample(xrange(5000), 5000)

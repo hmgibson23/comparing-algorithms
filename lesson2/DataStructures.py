@@ -17,7 +17,7 @@ array = [1,2,3,4]
 # Typically queues, stacks, lists are implemented
 # out of linked lists.
 class LinkedList:
-    def __init__(self, value, next=None):
+    def __init__(self, value=None, next=None):
         self.value = value
         self.next = next
 
@@ -44,6 +44,24 @@ class LinkedList:
     def add(self, value):
         end = self.end()
         end.next = LinkedList(value)
+
+
+    # This does not need to be done recursively but I just prefer it that way
+    def search(self, current, value):
+        if current.value == value:
+            return current
+        elif current.value != value and current.next == None:
+            return "Not found!"
+        else:
+            return self.search(current.next, value)
+
+    # This will be used in the final week
+    @timing
+    def timeSearch(self, current, value):
+        return self.search(current, value)
+
+
+
 
 
 
@@ -99,7 +117,6 @@ def main():
     l.add("list")
     l.add("!")
     l.show()
-
 
     # Binary tree
     print "\nBinary Tree"
