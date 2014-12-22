@@ -24,6 +24,13 @@ def fibonacciMem(n):
 
     return fib(n)
 
+# # Remember dynamic programming is simply reducing the steps
+# # in a computation to a series of simple and easier steps.
+# # The above example uses a cache to avoid computing already
+# # computed numbers but there are other ways. Look at Dijkstra's
+# # algorithm and of the Tower of Hanoi problem for more methods
+# # of dynamic programming.
+
 def main():
     print fibonacci(30)
     print fibonacciMem(30)
