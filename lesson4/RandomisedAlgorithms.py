@@ -21,6 +21,7 @@ def qsort2(n):
 
 def qsort(n):
     if len(n)<2: return n
+    # choosing a random pivot makes a whole world of difference
     pivot_element = random.choice(n)
 
     # In Python QuickSort will be much faster with list comprehensions

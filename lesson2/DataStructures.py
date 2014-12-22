@@ -22,20 +22,30 @@ class LinkedList:
         self.next = next
 
     # What is the complexity of traversing the list?
-    def traverse():
-        temp
-
+    def end(self):
+        temp = self
         # go to the end
-        while self.next:
-            temp = self.next
+        while temp.next:
+            temp = temp.next
 
         return temp
 
 
+    def show(self):
+        temp = self
+        while temp.next:
+            print temp.value
+            temp = temp.next
+
+
+
     # We only append it this specific list. Of course, you could
     # implement it differently
-    def add():
-        end = self.traverse()
+    def add(self, value):
+        end = self.end()
+        end.next = LinkedList(value)
+
+
 
 # Binary tree. A fundamental tree.
 # We'll talk about self-balancing binary trees
@@ -49,12 +59,61 @@ class BinaryTree:
 
     # What's the complexity of this traverse?
     # What order traversal is this? Pre or post?
-    def traverse(current):
+    def traverse(self, current):
 
         if not current.right and not current.left:
-            return current.value
-        elif current.right:
-            traverse()
+            print current.value
+
+        if current.left:
+            current.traverse(current.left)
+            print current.value
+
+        if current.right:
+            current.traverse(current.right)
+            print current.value
 
 
-    def add():
+    # How about the insert?
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = BinaryTree(value)
+            else:
+                self.left.insert(value)
+        elif value > self.value:
+            if self.right is None:
+                self.right = BinaryTree(value)
+            else:
+                self.right.insert(value)
+
+    # If you're bored - try and implement a search function for
+    # this tree
+
+def main():
+    # LinkedList
+    print "Linked List"
+    print "==========="
+    l = LinkedList("A")
+    l.add("link")
+    l.add("ed")
+    l.add("list")
+    l.add("!")
+    l.show()
+
+
+    # Binary tree
+    print "\nBinary Tree"
+    print "==========="
+    t = BinaryTree(6)
+    t.insert(5)
+    t.insert(10)
+    t.insert(3)
+    t.insert(2)
+    t.insert(1)
+    t.insert(11)
+    t.insert(12)
+    t.traverse(t)
+
+
+if __name__ == "__main__":
+    main()

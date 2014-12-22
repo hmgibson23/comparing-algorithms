@@ -38,7 +38,7 @@ def qs(n):
     if len(n) <= 1:
         return n
     else:
-        pivot = n[0]
+        pivot = n[len(n)/2]
         for i in n:
             if i < pivot:
                 less.append(i)
