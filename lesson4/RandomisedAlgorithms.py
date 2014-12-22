@@ -16,7 +16,7 @@ from lesson3.Sorting import *
 # nicely enough. See http://www.csie.ntu.edu.tw/~b93076/p847-sedgewick.pdf for more.
 
 @timing
-def qsort2(n):
+def randomQuickSort(n):
     return qsort(n)
 
 def qsort(n):
@@ -38,12 +38,9 @@ def main():
     values = random.sample(xrange(5000), 5000)
 
     sorted = bubbleSort(values)
-
     sorted = heapSort(values)
-
     sorted = mergeSort(values)
-
-    sorted = qsort2(values)
+    sorted = randomQuickSort(values)
 
 if __name__ == "__main__":
     main()

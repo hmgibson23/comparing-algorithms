@@ -31,14 +31,14 @@ def quickSort(n):
 # This is a somewhat naive quicksort, which is why it's
 # outperformed by the merge and heap sorts. A better
 # quicksort, mostly, has no competitor.
-def qs(n):
+def qs(n, pivotPoint = 0):
     less = []
     pivotList = []
     more = []
     if len(n) <= 1:
         return n
     else:
-        pivot = n[len(n)/2]
+        pivot = n[pivotPoint]
         for i in n:
             if i < pivot:
                 less.append(i)
@@ -50,6 +50,29 @@ def qs(n):
         more = qs(more)
         return less + pivotList + more
 
+@timing
+def betterQuickSort(n):
+
+    def bqs(n):
+        less = []
+        pivotList = []
+        more = []
+        if len(n) <= 1:
+            return n
+        else:
+            pivot = n[len(n)/2]
+            for i in n:
+                if i < pivot:
+                    less.append(i)
+                elif i > pivot:
+                    more.append(i)
+                else:
+                    pivotList.append(i)
+            less = bqs(less)
+            more = bqs(more)
+            return less + pivotList + more
+
+    return bqs(n)
 
 
 ### Note that heapsort is a pretty complicated algorithm
@@ -102,12 +125,12 @@ def ms(n):
 
 def main():
 
-    values = random.sample(xrange(1000), 100)
+    values = random.sample(xrange(1000), 500)
 
     sorted = bubbleSort(values)
 
     sorted = quickSort(values)
-
+    sorted = betterQuickSort(values)
     sorted = heapSort(values)
 
     sorted = mergeSort(values)
