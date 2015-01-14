@@ -6,9 +6,9 @@ from helpers.Helpers import *
 @timing
 def linearSearch(val, values):
     position = 0
-    found = False
 
-    while position < len(values) and not found:
+
+    while position < len(values):
         if values[position] == val:
             break;
         else:
@@ -17,7 +17,7 @@ def linearSearch(val, values):
     return position
 
 # A binary search algorithm
-@timing
+@timingx
 def binarySearch(val, values):
     min = 0
     max = len(values) - 1

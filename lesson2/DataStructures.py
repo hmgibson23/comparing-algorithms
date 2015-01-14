@@ -107,6 +107,87 @@ class BinaryTree:
     # If you're bored - try and implement a search function for
     # this tree
 
+
+
+# A simple queue structure to give you an idea
+# How would you go about searching such a structure?
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0,item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+
+
+# A heap is a data structure that satisfies the following property:
+#  if Y is a child of X, then val(X) >= val(Y).
+# They are useful for priority queues and eventually Fibonacci heaps
+class Heap:
+    def __init__(self, items=None):
+        if items == None:
+            self.items = deque()
+        else:
+            self.items = self.makeHeap(items)
+
+    def makeHeap(self, items):
+        count = len(items)
+
+        for i in range(int(math.floor(count/2)) - 1, -1, -1):
+            self.heapify(items, i, count)
+
+        return items
+
+    def heapify(self, items, idx, max_element):
+        left, right = 2*idx + 1, 2*idx + 2
+
+        if left < max_element and items[left] > items[idx]:
+            largest = left
+        else:
+            largest = idx
+
+        if right < max_element and items[right] > items[largest]:
+            largest = right
+
+        if not largest == idx:
+            items[idx], items[largest] = items[largest], items[idx]
+            self.heapify(items, largest, max_element)
+
+    def add(self, item):
+        self.items.add(item)
+        self.makeHeap(self.items)
+
+    def remove(self):
+        item = self.items.popleft()
+        self.makeHeap(self.items)
+        return item
+
+
+# We use the heap above to make the priority queue
+# A priority queue is just a queue except the items have priority
+# and should come off in that order. Imagine a queue of processes, some have
+# higher priority than others and you want to maintain this priority, use a heap
+class PriorityQueue:
+    def __init__(self, items=None):
+        self.heap = Heap(items)
+
+    def insert(self, item):
+        self.heap.add(self.heap, item)
+
+    def remove(self):
+        return self.heap.remove()
+
+    def isEmpty(self):
+        return self.heap.isEmpty()
+
 def main():
     # LinkedList
     print "Linked List"
